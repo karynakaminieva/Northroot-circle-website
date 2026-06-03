@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  --nr-ink:           #0F1720;
+  --nr-ink-soft:      #1A2530;
+  --nr-paper:         #F5F1EA;
+  --nr-paper-2:       #ECE6DA;
+  --nr-paper-3:       #DFD6C3;
+  --nr-olive:         #BFBF6C;
+  --nr-olive-deep:    #9C9C50;
+  --nr-olive-soft:    #DCDCA8;
+  --nr-sky:           #D1DFFA;
+  --nr-sky-2:         #B7CBF4;
+  --nr-sky-ink:       #4D6FA8;
+  --nr-moss:          #3F5A3A;
+  --nr-moss-2:        #6A8259;
+  --nr-grey-50:       #7A7A7A;
+  --nr-grey-30:       #B8B8B8;
+  --nr-grey-15:       #D8D5CE;
+  --nr-grey-08:       #E8E4DB;
+  --nr-accent:        var(--nr-olive);
+  --nr-accent-fg:     var(--nr-ink);
+  --nr-border:        rgba(15,23,32,0.12);
+  --nr-border-strong: rgba(15,23,32,0.22);
+  --nr-shadow-card:   0 1px 0 rgba(15,23,32,0.04), 0 12px 32px -16px rgba(15,23,32,0.18);
+  --nr-shadow-hover:  0 1px 0 rgba(15,23,32,0.06), 0 20px 48px -16px rgba(15,23,32,0.28);
+  --nr-ease:          cubic-bezier(0.22, 0.61, 0.36, 1);
+  --nr-ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --nr-dur:           260ms;
+  --nr-dur-slow:      520ms;
+  --nr-page-pad:      32px;
+  --nr-max-w:         1484px;
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+html, body {
+  background: var(--nr-paper);
+  color: var(--nr-ink);
+  font-family: 'Inter', 'Helvetica Neue', -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ─── Display typography ─────────────────────────────────────── */
+.nr-display-xxl {
+  font-family: 'Alumni Sans SC', Impact, sans-serif;
+  font-weight: 500;
+  font-size: clamp(140px, 18vw, 260px);
+  line-height: 0.63;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.nr-display-xl {
+  font-family: 'Alumni Sans SC', Impact, sans-serif;
+  font-weight: 500;
+  font-size: clamp(96px, 12vw, 180px);
+  line-height: 0.7;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.nr-display-lg {
+  font-family: 'Alumni Sans SC', Impact, sans-serif;
+  font-weight: 500;
+  font-size: clamp(64px, 8vw, 120px);
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.nr-display-md {
+  font-family: 'Alumni Sans SC', Impact, sans-serif;
+  font-weight: 500;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.nr-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.nr-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.nr-quote {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.nr-rule {
+  border: 0;
+  border-top: 1px solid var(--nr-border);
+  margin: 0;
+}
+
+/* ─── Skip link ──────────────────────────────────────────────── */
+.nr-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--nr-olive);
+  color: var(--nr-ink);
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nr-skip:focus { left: 16px; top: 16px; }
+
+/* ─── Hero title ─────────────────────────────────────────────── */
+.nr-hero-title {
+  font-size: clamp(46px, 13.2vw, 200px) !important;
+  height: auto !important;
+  line-height: 0.84 !important;
+}
+
+/* ─── Scroll reveal ──────────────────────────────────────────── */
+.nr-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--nr-dur-slow) var(--nr-ease-out),
+              transform var(--nr-dur-slow) var(--nr-ease-out);
+}
+.nr-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.nr-reveal-delay-1 { transition-delay: 80ms; }
+.nr-reveal-delay-2 { transition-delay: 160ms; }
+.nr-reveal-delay-3 { transition-delay: 240ms; }
+
+/* ─── Journal card ───────────────────────────────────────────── */
+.nr-journal-card {
+  transition: transform var(--nr-dur) var(--nr-ease);
+}
+.nr-journal-card:hover { transform: translateY(-4px); }
+
+/* ─── Drop cap ───────────────────────────────────────────────── */
+.nr-dropcap::first-letter {
+  float: left;
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 4.6em;
+  line-height: 0.78;
+  padding: 6px 12px 0 0;
+  color: var(--nr-ink);
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--nr-olive);
+  outline-offset: 2px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  :root { --nr-page-pad: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
