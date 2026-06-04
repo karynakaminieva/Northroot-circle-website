@@ -36,7 +36,7 @@ export default function Home() {
       <Header onApply={openApply} onMenuOpen={() => setMenuOpen(true)} />
 
       <main>
-        <Hero onApply={openApply} headlineColor="#D1DFFA" />
+        <Hero onApply={openApply} />
         <Intro />
         <FeatureGrid variant="rows" />
         <Editorial />
